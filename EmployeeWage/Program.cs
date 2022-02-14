@@ -6,11 +6,24 @@ namespace EmployeeWage
     {
         static void Main(string[] args)
         {
+            int PRESENT = 0;
+            int PARTIAL_PRESENT = 1;
+            int WAGE_PER_HOUR = 8;
+            int FULL_TIME_WORKING_HOUR = 20;
+            int wage = 0;
             Random random = new Random();
-            int empCheck = random.Next(0, 2);
-            if (empCheck == 0)
+            int empCheck = random.Next(0, 3);
+            if (empCheck == PRESENT)
             {
                 Console.WriteLine("Employee is present");
+                wage = FULL_TIME_WORKING_HOUR * WAGE_PER_HOUR;
+                Console.WriteLine($"WAGE:{wage}");
+            }
+            else if (empCheck == PARTIAL_PRESENT)
+            {
+                Console.WriteLine("Employee is partial present");
+                Console.WriteLine($"WAGE:{wage}");
+
             }
             else
             {
