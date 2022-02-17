@@ -4,19 +4,21 @@ namespace EmployeeWage
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            const int PRESENT = 0;
-            const int PARTIAL_PRESENT = 1;
-            const int WAGE_PER_HOUR = 20;
-            const int FULL_TIME_WORKING_HOUR = 8;
-            int PART_TIME_WORKING_HOUR = 4;
-            int TOTAL_WORKING_HOUR_IN_MONTH = 100;
-            int NO_OF_WORKING_DAY_IN_MONTH = 20;
-            int day = 0;
-            int totalworkinghr = 0;
 
-            while (day != NO_OF_WORKING_DAY_IN_MONTH && totalworkinghr != TOTAL_WORKING_HOUR_IN_MONTH)
+        const int PRESENT = 0;
+        const int PARTIAL_PRESENT = 1;
+        const int WAGE_PER_HOUR = 20;
+        static int ComputeEmpwage(int partTimeHr, int fullTimeWorkHr, int noOfWorkingDay, int totalWorkinhHr)
+        {
+
+            int FULL_TIME_WORKING_HOUR = fullTimeWorkHr;
+            int PART_TIME_WORKING_HOUR = partTimeHr;
+            int NO_OF_WORKING_DAY_IN_MONTH = noOfWorkingDay;
+            int TOTAL_WORKING_HR = totalWorkinhHr;
+            int day = 0;
+            int totalwage = 0;
+            int totalWorkingHr = 0;
+            while (day != 20 && totalWorkingHr <= TOTAL_WORKING_HR)
             {
                 int wage = 0;
                 Random random = new Random();
@@ -27,14 +29,14 @@ namespace EmployeeWage
                     case PRESENT:
                         Console.WriteLine("Employee is present");
                         wage = FULL_TIME_WORKING_HOUR * WAGE_PER_HOUR;
-                        totalworkinghr = totalworkinghr + FULL_TIME_WORKING_HOUR;
+                        totalWorkingHr += FULL_TIME_WORKING_HOUR;
                         Console.WriteLine($"WAGE:{wage}");
                         break;
 
                     case PARTIAL_PRESENT:
                         Console.WriteLine("Employee is partial present");
                         wage = PART_TIME_WORKING_HOUR * WAGE_PER_HOUR;
-                        totalworkinghr = totalworkinghr + PART_TIME_WORKING_HOUR;
+                        totalWorkingHr += PART_TIME_WORKING_HOUR;
                         Console.WriteLine($"WAGE:{wage}");
                         break;
 
@@ -45,8 +47,16 @@ namespace EmployeeWage
 
                 }
                 day++;
+
+                totalwage += wage;
             }
-            Console.WriteLine($"No of working day {day} and Total working hr {totalworkinghr}");
+
+            return totalwage;
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine($"Total wage: {ComputeEmpwage(4, 8, 20, 100)}");
+            Console.WriteLine($"Total wage: {ComputeEmpwage(6, 12, 28, 120)}");
         }
     }
 }
