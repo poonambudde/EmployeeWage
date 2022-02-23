@@ -1,22 +1,17 @@
 ﻿using System;
 
-namespace EmployeeWage
+namespace Employee_Wage
 {
     class Program
     {
-
-      
-        const int WAGE_PER_HOUR = 20;
-  
-      
-        
         static void Main(string[] args)
         {
-            Employee employwage = new Employee("Dmart", 12, 6, 20, 90, 20);
-            employwage.ComputeEmpwage();
-
-            Console.WriteLine(employwage.ToString());
+            EmpWageBuilder dMart = new EmpWageBuilder("DMart", 20, 2, 10);
+            EmpWageBuilder reliance = new EmpWageBuilder("Reliance", 10, 4, 20);
+            dMart.computeEmpWage();
+            Console.WriteLine(dMart.toString());
+            reliance.computeEmpWage();
+            Console.WriteLine(reliance.toString());
         }
     }
 }
-    
