@@ -26,7 +26,7 @@ namespace Employee_Wage
         }
 
         public string toString()
-        {
+        {           
             return "Total emp wages for company:" + this.company + " is " + this.totalEmpWages;
         }
     }
