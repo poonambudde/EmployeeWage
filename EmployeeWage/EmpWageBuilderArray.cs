@@ -12,6 +12,7 @@ namespace Employee_Wage
 
         List<CompanyEmpWage> companyEmpWageList;
         Dictionary<string, CompanyEmpWage> companyToEmpWageMap;
+
         public EmpWageBuilderArray()
         {
             this.companyEmpWageList = new List<CompanyEmpWage>();
@@ -60,6 +61,10 @@ namespace Employee_Wage
                 Console.WriteLine("Day=" + totalWorkingDays + " Emplyee hours=" + empHrs);
             }
             return totalEmployeeHour * companyEmpWage.empRatePerHour;
+        }
+        public int getTotalWage(string company)
+        {
+            return this.companyToEmpWageMap[company].totalEmpWages;
         }
     }
 }
