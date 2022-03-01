@@ -4,45 +4,39 @@ namespace EmployeeWage
 {
     class Program
     {
+        public const int IS_PART_TIME = 1;
+        public const int IS_FULL_TIME = 2;
+        public const int EMP_RATE_PER_HOUR = 20;
+        public const int NUM_OF_WORKING_DAYS = 20;
+        
         static void Main(string[] args)
         {
-            const int PRESENT = 0;
-            const int PARTIAL_PRESENT = 1;
-            const int WAGE_PER_HOUR = 20;
-            const int FULL_TIME_WORKING_HOUR = 8;
-            int PART_TIME_WORKING_HOUR = 4;
-            int NO_OF_WORKING_DAY_IN_MONTH = 20;
-            int day = 0;
-
-            while (day != NO_OF_WORKING_DAY_IN_MONTH)
+            Console.WriteLine("Welcome to employee wage computation program");
+            
+            int empHrs = 0;
+            int empWage = 0;
+            int totalEmpWages = 0;
+            for (int i = 0; i < NUM_OF_WORKING_DAYS; i++)
             {
-                int wage = 0;
                 Random random = new Random();
                 int empCheck = random.Next(0, 3);
-
                 switch (empCheck)
                 {
-                    case PRESENT:
-                        Console.WriteLine("Employee is present");
-                        wage = FULL_TIME_WORKING_HOUR * WAGE_PER_HOUR;
-                        Console.WriteLine($"WAGE:{wage}");
+                    case IS_PART_TIME:
+                        empHrs = 4;
                         break;
-
-                    case PARTIAL_PRESENT:
-                        Console.WriteLine("Employee is partial present");
-                        wage = PART_TIME_WORKING_HOUR * WAGE_PER_HOUR;
-                        Console.WriteLine($"WAGE:{wage}");
+                    case IS_FULL_TIME:
+                        empHrs = 8;
                         break;
-
                     default:
-                        Console.WriteLine("Employee is absent");
-                        Console.WriteLine($"WAGE:{wage}");
+                        empHrs = 0;
                         break;
-
                 }
-                day++;
+                empWage = empHrs * EMP_RATE_PER_HOUR;
+                totalEmpWages = totalEmpWages + empWage;
+                Console.WriteLine("Employee wages is=" + empWage);
             }
+            Console.WriteLine("total employee wage is=" +totalEmpWages);
         }
     }
 }
-    
